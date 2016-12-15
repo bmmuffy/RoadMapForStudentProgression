@@ -1,0 +1,92 @@
+Road Map for Student Progression 
+
+The Roadmap for Student Progression uses modern browser technologies to render high-quality data visualizations. All graphics are rendered on the client using scalable vector graphics with a fall back to canvas and vector mark-up language.
+In this wiki, you can learn how to register and configure the Road Map, which displays data as sectors from a circle. The Road Map is a chart variation with ability to display single series of data in a two-dimensional circle. It is useful for displaying data as parts of a whole.
+
+
+To instantiate the Road Map, you need to specify an empty div with an id on the page, select this div with a jQuery selector and invoke the kendoChart() function. As a result, the chart is registered as a standard jQuery plugin.
+
+
+The Road Map can fetch data for its series from either local or remote data source. It can also use the UI Data Source as a mediator for processing data.
+
+Getting Started
+Create the Chart
+To create a chart, add an empty div in the HTML, provide it with an ID, and, optionally, set the width and height of the desired chart inline or via CSS, as demonstrated in the example below.
+EXAMPLE
+<div id="chart" style="width: 400px; height: 600px"></div>
+Initialize the Chart
+The UI Chart widget is rendered by selecting the div with a jQuery selector and calling the kendoChart() function, as demonstrated below.
+EXAMPLE
+$("#chart").kendoChart();
+Configuration
+Add Title
+This chart can be given a title by specifying the text property of the title object, as demonstrated in the example below.
+EXAMPLE
+$("#chart").kendoChart({
+    title: {
+         text: "Student progression road Map"
+    }
+});
+Bind to Data
+The road map can visualize series bound to both local and remote data.
+Bind to Local Arrays
+Start by creating a series that displays inline data.
+EXAMPLE
+$("#chart").kendoChart({
+    title: {
+         text: " Student progression road Map "
+    },
+    series: [
+         {name: "Example Series", data: [200, 450, 300, 125] }
+    ]
+});
+Bind to Remote data 
+The Road map supports binding to remote data via RESTful services.
+For remote data binding you need to specify a remote endpoint or a web service returning data in JSON/JSONP format and utilize the DataSource in-between the chart and the underlying data. To make the connection to the remote endpoint and process the data properly, the data source needs information about the web service URL(s), the request type, the response data type, and the structure (schema) of the response, in case it is more complex than a plain array of objects.
+In this example the chart fetches its data from a remote endpoint assigned via the DataSource read configuration. 
+
+function createChart() {
+            $("#chart").kendoChart({
+                dataSource: {
+                    transport: {
+                        read: {
+                            url: "../content/dataviz/js/screen_resolution.json",
+                            dataType: "json"
+                        }
+                    },
+                    sort: {
+                        field: "order",
+                        dir: "asc"
+                    },
+                    group: {
+                        field: "year"
+                    }
+                },
+                legend: {
+                    position: "top"
+                },
+                title: {
+                    text: "1024x768 screen resolution trends"
+                },
+                seriesDefaults: {
+                    type: "donut",
+                    startAngle: 270
+                },
+                series: [{
+                    field: "share",
+                    categoryField: "resolution",
+                    visibleInLegendField: "visibleInLegend",
+                    padding: 10
+                }],
+                tooltip: {
+                    visible: true,
+                    template: "#= dataItem.resolution #: #= value #% (#= dataItem.year #)"
+                }
+            });
+        }
+
+
+
+
+
+
