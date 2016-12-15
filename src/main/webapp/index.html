@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>UNISA|Progression Map</title>
+    <meta charset="utf-8">
+    <link href="content/shared/styles/examples-offline.css" rel="stylesheet">
+    <link href="styles/kendo.common.min.css" rel="stylesheet">
+    <link href="styles/kendo.rtl.min.css" rel="stylesheet">
+    <link href="styles/kendo.default.min.css" rel="stylesheet">
+    <link href="styles/kendo.default.mobile.min.css" rel="stylesheet">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jszip.min.js"></script>
+    <script src="js/kendo.all.min.js"></script>
+    <script src="content/shared/js/console.js"></script>
+    <script>
+        
+    </script>
+    
+    
+</head>
+<body>
+       <center>
+       <p class="offline-button" style="background: #42b3b3; height: 30px; width: 630px; font-size: 25px" >ROADMAP FOR ACADEMIC PROGRESSION</p>
+       </center> 
+    
+    <div id="example">
+    <div class="demo-section k-content wide">
+        <center><div id="chart" style=" width: 900px; height: 900px"></div></center>
+        <div class="description" style="position: absolute; top: 300px ; left: 80px"  >
+        <p><img src="styles/images/one.png" title="one" >Assignments</p>
+        <p><img src="styles/images/two.png" title="two">Test/Assessments</p>
+        <p><img src="styles/images/three.png" title="three">Tutorials</p>
+        <p><img src="styles/images/four.png" title="four">Courses</p>
+        <p><img src="styles/images/five.png" title="five">Projects</p>
+        </div>
+    </div>
+    <script>
+        function createChart() {
+            $("#chart").kendoChart({
+                title: {
+                    position: "top",
+                    text: "if there is no Struggle there is no progress"
+                },
+                legend: {
+                    visible: false
+
+                },
+                chartArea: {
+                    background: ""
+                },
+                seriesDefaults: {
+                    type: "donut",
+                    startAngle: 130,
+                },
+                series:[
+                    {
+
+                    name: "2011",
+                    data:[
+
+                    {
+                        category: "Middle East",
+                        value: 20,
+                        color: "white"
+                    },
+
+                    {
+                        category: "North America",
+                        value: 60,
+                        color: "#66FFFF"
+                    }
+
+                    ]
+
+                    },
+
+                    {
+
+                    name: "2011",
+                    data:[
+
+                    {
+                        category: "Europe",
+                        value: 21,
+                        color: "white"
+                    },
+
+                    {
+                        category: "Latin America",
+                        value: 45,
+                        color: "#00FFFF"
+                    },
+
+                    ]
+
+                    },
+
+                    {
+
+                    name: "2011",
+                    data:[
+
+                    {
+                        category: "Europe",
+                        value: 21,
+                        color: "white"
+                    },
+
+                    {
+                        category: "Latin America",
+                        value: 60,
+                        color: "#00CCCC"
+                    },
+
+                    ]
+
+                    },
+
+                    {
+
+                    name: "2011",
+                    data:[
+
+                    {
+                        category: "Asia",
+                        value: 20,
+                        color: "white"
+                    },
+
+                    {
+                        category: "Europe",
+                        value: 50,
+                        color: "#009999"
+                    },
+
+
+                    ]
+
+                    },
+
+                    {
+                    name: '% Completed',
+                    data: [
+                    
+
+                    {
+                        category: "Status:Still to do <br> Date: 20/10/2016 <br> description: we are doing great <br>",
+                        value: 40,
+                        color: "white"
+                    },
+
+                    {
+                        category: "Status:Progress <br> Date: 20/10/2016 <br> description: we are doing great <br>",
+                        value: 40,
+                        color: "#006666"
+                    },
+
+                    {
+                        category: "Status:Completed <br> Date: Week 1 (12/10/16-15/10/16) <br> description: Introduction to economics <br>",
+                        value: 10,
+                        color: "#006666"
+                    },
+
+                    {
+                        category: "Status:Completed <br> Date: Week 2 <br> description: Basics to economics <br>",
+                        value: 10,
+                        color: "#006666"
+                    },
+
+
+
+                    ],
+                    labels: {
+                        visible: true,
+                        background: "transparent",
+                        position: "outsideEnd",
+                        
+                    }
+                }
+
+
+
+
+
+                ],
+                tooltip: {
+                    visible: true,
+                    template: "#= category # (#= series.name #): #= value #%"
+                }
+            });
+        }
+
+        $(document).ready(createChart);
+        $(document).bind("kendo:skinChange", createChart);
+    </script>
+</div>
+
+
+    
+</body>
+</html>
